@@ -15,15 +15,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'python3 -m venv venv'
+                // bat 'python3 -m venv venv'
+                bat 'python -m py_compile src/factorial.py'
+                stash(name: 'compiled-results', includes: 'src/*.py*')
             }
         }
         stage('Run Tests') {
             steps {
                 bat '''
-                    venv\\Scripts\\activate
-                    pip install pytest==8.3.2
-                    pytest --junit-xml test-reports/results.xml tests/factorial_test.py
+                    py.test --junit-xml test-reports/results.xml tests/factorial_test.py
                 '''
                 // Run the Python test file
                 // Modify this command based on the test framework you're using
