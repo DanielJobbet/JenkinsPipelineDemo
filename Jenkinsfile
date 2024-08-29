@@ -26,7 +26,10 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 // Run the Python tests
-                bat 'venv\\Scripts\\python -m pytest -v tests/factorial_test.py --junit-xml=results.xml'
+                bat '''
+                    call venv\\Scripts\\activate
+                    python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
+                '''
             }
         }
     }
