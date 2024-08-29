@@ -31,7 +31,7 @@ pipeline {
     post {
         always {
             // Clean up workspace after the build!
-            junit '**/test-reports/results.xml'
+            junit '**/test-reports/*.xml'
             // cleanWs()
         }
     }
