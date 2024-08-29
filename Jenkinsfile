@@ -20,7 +20,7 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 // Run the Python tests and save logs
-                bat 'python -m pytest -v tests/factorial_test.py --junit-xml=results.xml || [[ $? -eq 1 ]]'
+                bat 'python -m pytest --suppress-tests-failed-exit-code -v tests/factorial_test.py --junit-xml=results.xml'
                 junit testResults: 'results.xml', skipPublishingChecks: true
             }
         }
