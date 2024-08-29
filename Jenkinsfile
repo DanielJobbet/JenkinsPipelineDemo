@@ -25,7 +25,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Run the Python test file
-                bat 'python tests/factorial_test.py'
+                bat 'python -m unittest tests/factorial_test.py'
             }
         }
     }
