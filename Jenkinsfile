@@ -7,8 +7,7 @@ pipeline {
                 checkout scm
             }
         }
-        stages {
-            stage('Setup Python Environment') {
+        stage('Setup Python Environment') {
                 steps {
                     // Step 1: Install Python if needed
                     bat 'python3 -m venv venv'
