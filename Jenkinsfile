@@ -13,7 +13,7 @@ pipeline {
                     python3 -m venv venv
                     venv\\Scripts\\activate
                     pip install pytest==8.3.2
-                    pytest -u tests/factorial_test.py
+                    pytest tests/factorial_test.py
                 '''
                 // Run the Python test file
                 // Modify this command based on the test framework you're using
