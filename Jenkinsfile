@@ -13,10 +13,14 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Build') {
+            steps {
+                bat 'python3 -m venv venv'
+            }
+        }
         stage('Run Tests') {
             steps {
                 bat '''
-                    python3 -m venv venv
                     venv\\Scripts\\activate
                     pip install pytest==8.3.2
                     pytest --junit-xml test-reports/results.xml tests/factorial_test.py
@@ -29,7 +33,7 @@ pipeline {
             post {
                 always {
                     // Clean up workspace after the build!
-                    junit '**/test-reports/*.xml'
+                    junit 'test-reports/results.xml'
                     // cleanWs()
                 }
             }
