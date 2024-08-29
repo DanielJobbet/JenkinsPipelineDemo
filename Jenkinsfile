@@ -27,7 +27,7 @@ pipeline {
             steps {
                 bat '''
                     call venv\\Scripts\\activate
-                    python -m pylint src tests > pylint_report.txt 2>&1
+                    pylint src tests > pylint_report.txt 2>&1
                     type pylint_report.txt
                 '''
             }
