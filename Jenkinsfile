@@ -24,12 +24,21 @@ pipeline {
             }
         }
         stage('Linting') {
+            // steps {
+            //     bat '''
+            //         call venv\\Scripts\\activate
+            //         python -m pylint src tests > pylint_report.txt
+            //         type pylint_report.txt
+            //     '''
+            // }
             steps {
-                bat '''
-                    call venv\\Scripts\\activate
-                    venv\\Scripts\\python -m pylint src tests > pylint_report.txt
-                    type pylint_report.txt
-                '''
+            sh 'pylint -f parseable --reports=no * > pylint.log' //remove pythonpath if not needed in your environment
+            }
+            post {
+                always {
+                    sh 'cat pylint.log'
+                        recordIssues healthy: 1, tools: [pyLint(name: 'report name', pattern: '**/pylint.log')], unhealthy: 2
+                }
             }
         }
         stage('Run Unit Tests') {
