@@ -26,13 +26,13 @@ pipeline {
                 // bat 'python -m unittest factorial_test.py'
                 // or, if using pytest:
             }
-        }
-    }
-    post {
-        always {
-            // Clean up workspace after the build!
-            junit '**/test-reports/*.xml'
-            // cleanWs()
+            post {
+                always {
+                    // Clean up workspace after the build!
+                    junit '**/test-reports/*.xml'
+                    // cleanWs()
+                }
+            }
         }
     }
 }
