@@ -25,7 +25,7 @@ pipeline {
                 // or, if using pytest:
                 bat '''
                     venv\\Scripts\\activate
-                    pytest -s tests/factorial_test.py
+                    pytest -s
                 '''
             }
         }
