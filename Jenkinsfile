@@ -14,6 +14,7 @@ pipeline {
                     venv\\Scripts\\activate
                     pip install pytest==8.3.2
                     python -m pytest --junitxml=test.xml tests/factorial_test.py
+                    ./gradlew check
                 '''
                 // Run the Python test file
                 // Modify this command based on the test framework you're using
