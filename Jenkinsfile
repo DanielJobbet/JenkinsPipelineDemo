@@ -32,7 +32,7 @@ pipeline {
             //     '''
             // }
             steps {
-            bat 'python -m pylint --exit-zero --output-format=parseable --reports=n tests > pylint.log' //remove pythonpath if not needed in your environment
+            bat 'venv\\Scripts\\python -m pylint --exit-zero --output-format=parseable --reports=n tests > pylint.log' //remove pythonpath if not needed in your environment
             }
             post {
                 always {
