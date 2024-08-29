@@ -33,7 +33,7 @@ pipeline {
             post {
                 always {
                     // Clean up workspace after the build
-                    junit allowEmptyResults: true, testResults: '**/results.xml.xml'
+                    junit allowEmptyResults: true, testResults: 'results.xml'
                     // cleanWs()
                 }
             }
