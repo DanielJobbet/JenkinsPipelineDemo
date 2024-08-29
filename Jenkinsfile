@@ -1,10 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Initialize') {
             steps {
-                // Checkout the code from the Git repository
-                checkout scm
+                echo 'Initializing..'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
         stage('Run Tests') {
