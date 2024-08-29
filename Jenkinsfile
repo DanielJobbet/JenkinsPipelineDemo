@@ -19,15 +19,24 @@ pipeline {
                 bat '''
                     python -m venv venv
                     venv\\Scripts\\activate
-                    pip install pytest
+                    pip install requirements.txt
                 '''
             }
         }
-        stage('Run Tests') {
+        stage('Linting') {
             steps {
-                // Run the Python test file
                 bat '''
-                    python -m pytest -v --color=yes tests/factorial_test.py
+                    call venv\\Scripts\\activate
+                    flake8 --output-file=flake8_report.txt --tee src tests
+                    type flake8_report.txt
+                '''
+            }
+        }
+        stage('Run Unit Tests') {
+            steps {
+                // Run the Python tests
+                bat '''
+                    python -m pytest -v tests/factorial_test.py
                 '''
             }
         }
