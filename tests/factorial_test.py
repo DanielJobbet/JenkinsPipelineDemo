@@ -1,5 +1,5 @@
 import unittest
-import factorial
+import src.factorial
 
 
 class FactorialTestCase(unittest.TestCase):
