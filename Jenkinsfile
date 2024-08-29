@@ -27,7 +27,7 @@ pipeline {
             steps {
                 bat '''
                     call venv\\Scripts\\activate
-                    flake8 --output-file=flake8_report.txt --tee src tests
+                    venv\\Scripts\\flake8 src tests > flake8_report.txt 2>&1
                     type flake8_report.txt
                 '''
             }
