@@ -36,7 +36,7 @@ pipeline {
             }
             post {
                 always {
-                    bat 'cat pylint.log'
+                    bat 'type pylint.log'
                         recordIssues healthy: 1, tools: [pyLint(name: 'report name', pattern: '**/pylint.log')], unhealthy: 2
                 }
             }
