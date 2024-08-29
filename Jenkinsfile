@@ -7,12 +7,6 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
-        stage('Checkout') {
-            steps {
-                // Checkout the code from the Git repository
-                checkout scm
-            }
-        }
         stage('Build') {
             steps {
                 // Build the Python virtual environment
@@ -26,9 +20,8 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 // Run the Python tests
-                bat '''
-                    python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
-                '''
+                bat 'python -m pytest -v tests/factorial_test.py --junit-xml=results.xml || [[ $? -eq 1 ]]'
+                junit results.xml
             }
         }
     }
