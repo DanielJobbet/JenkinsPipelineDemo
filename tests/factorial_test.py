@@ -11,6 +11,5 @@ class FactorialTestCase(unittest.TestCase):
         self.assertEqual(factorial.factorial(3), 6)
         self.assertEqual(factorial.factorial(4), 24)
 
-
 if __name__ == '__main__':
     unittest.main()
