@@ -27,7 +27,7 @@ pipeline {
                 // Run the Python test file
                 bat '''
                     venv\\Scripts\\activate
-                    python -m unittest -v tests/factorial_test.py
+                    python tests/factorial_test.py
                 '''
             }
         }
