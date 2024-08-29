@@ -25,7 +25,10 @@ pipeline {
             steps {
                 // Run the Python test file
                 // Modify this command based on the test framework you're using
-                bat 'python3 -m unittest factorial_test.py'
+                bat '''
+                    venv\\Scripts\\activate
+                    python3 -m unittest factorial_test.py
+                '''
                 // or, if using pytest:
             }
             post {
