@@ -27,7 +27,7 @@ pipeline {
                 // Modify this command based on the test framework you're using
                 bat '''
                     venv\\Scripts\\activate
-                    python3 -m unittest factorial_test.py
+                    python3 -m unittest -v factorial_test.py
                 '''
                 // or, if using pytest:
             }
