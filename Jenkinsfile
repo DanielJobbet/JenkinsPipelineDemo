@@ -13,7 +13,7 @@ pipeline {
                     python3 -m venv venv
                     venv\\Scripts\\activate
                     pip install pytest==8.3.2
-                    python -m pytest --junitxml=test.xml tests/factorial_test.py
+                    pytest tests/factorial_test.py --junitxml=./xmlReport/output.xml
                     ./gradlew check
                 '''
                 // Run the Python test file
@@ -26,7 +26,7 @@ pipeline {
     post {
         always {
             // Clean up workspace after the build!
-            junit 'build/reports/**/*.xml'
+            junit './xmlReport/output.xml'
             // cleanWs()
         }
     }
