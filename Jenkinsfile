@@ -23,7 +23,7 @@ pipeline {
                 bat '''
                     venv\\Scripts\\activate
                     pip install pytest==8.3.2
-                    pytest --verbose --junit-xml test-reports/results.xml tests/factorial_test.py
+                    pytest --verbose --junit-xml results.xml tests/factorial_test.py
                 '''
                 // Run the Python test file
                 // Modify this command based on the test framework you're using
@@ -33,7 +33,7 @@ pipeline {
             post {
                 always {
                     // Clean up workspace after the build
-                    junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
+                    junit allowEmptyResults: true, testResults: '**/results.xml.xml'
                     // cleanWs()
                 }
             }
