@@ -9,11 +9,10 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                // Step 1: Install Python if needed
                 bat '''
                     python3 -m venv venv
                     venv\\Scripts\\activate
-                    pip install pytest>=7.0.0
+                    pip install pytest>=8.3.2
                     pytest -s
                 '''
                 // Run the Python test file
