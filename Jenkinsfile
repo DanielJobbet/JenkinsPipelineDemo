@@ -15,11 +15,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Build the Python virtual environment
+                // Build environment
                 bat '''
-                    python -m venv venv
-                    venv\\Scripts\\activate
-                    pip install pytest
+                    pip install -r requirements.txt
                 '''
             }
         }
