@@ -32,11 +32,11 @@ pipeline {
             //     '''
             // }
             steps {
-            sh 'pylint -f parseable --reports=no * > pylint.log' //remove pythonpath if not needed in your environment
+            bat 'pylint -f parseable --reports=no * > pylint.log' //remove pythonpath if not needed in your environment
             }
             post {
                 always {
-                    sh 'cat pylint.log'
+                    bat 'cat pylint.log'
                         recordIssues healthy: 1, tools: [pyLint(name: 'report name', pattern: '**/pylint.log')], unhealthy: 2
                 }
             }
