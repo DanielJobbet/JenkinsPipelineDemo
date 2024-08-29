@@ -32,7 +32,7 @@ pipeline {
             //     '''
             // }
             steps {
-            bat 'pylint -f parseable --reports=no * > pylint.log' //remove pythonpath if not needed in your environment
+            bat 'python -m pylint -f parseable --reports=no * > pylint.log' //remove pythonpath if not needed in your environment
             }
             post {
                 always {
