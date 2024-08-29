@@ -25,19 +25,11 @@ pipeline {
         }
         stage('Linting') {
             steps {
-                // bat '''
-                //     call venv\\Scripts\\activate
-                //     where pylint
-                //     venv\\Scripts\\python -m pylint src tests > pylint_report.txt 2>&1
-                //     type pylint_report.txt
-                // '''
-                script {
-                    bat 'find . -name \\*.py | xargs pylint -f parseable | tee pylint.log'
-                    recordIssues(
-                        tool: pyLint(pattern: 'pylint.log'),
-                        unstableTotalHigh: 100,
-                    )
-                }
+                bat '''
+                    call venv\\Scripts\\activate
+                    python -m pylint src tests > pylint_report.txt 2>&1
+                    type pylint_report.txt
+                '''
             }
         }
         stage('Run Unit Tests') {
