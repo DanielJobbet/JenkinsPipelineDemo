@@ -12,7 +12,7 @@ pipeline {
                 bat '''
                     python3 -m venv venv
                     venv\\Scripts\\activate
-                    pip install pytest>=8.3.2
+                    pip install pytest==8.3.2
                     pytest -s
                 '''
                 // Run the Python test file
