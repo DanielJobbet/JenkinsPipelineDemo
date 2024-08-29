@@ -13,6 +13,7 @@ pipeline {
                 // Modify this command based on the test framework you're using
                 // bat 'python -m unittest factorial_test.py'
                 // or, if using pytest:
+                bat 'pip install pytest'
                 bat 'pytest -s tests/factorial_test.py'
             }
         }
