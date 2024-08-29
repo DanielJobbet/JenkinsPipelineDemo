@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
-                    python3 -m venv venv
+                    python -m venv venv
                     venv\\Scripts\\activate
                 '''
             }
@@ -27,7 +27,7 @@ pipeline {
                 // Modify this command based on the test framework you're using
                 bat '''
                     venv\\Scripts\\activate
-                    python3 -m unittest -v factorial_test.py
+                    python -m unittest -v factorial_test.py
                 '''
                 // or, if using pytest:
             }
