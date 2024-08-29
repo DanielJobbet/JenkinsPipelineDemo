@@ -10,11 +10,9 @@ pipeline {
         stage('Setup Python Environment') {
                 steps {
                     // Step 1: Install Python if needed
-                    bat 'python3 -m venv venv'
-                    
-                    // Step 2: Activate the virtual environment
                     bat '''
-                        source venv/bin/activate
+                        python3 -m venv venv
+                        venv\\Scripts\\activate
                         pip install pytest>=7.0.0
                     '''
                 }
@@ -26,7 +24,7 @@ pipeline {
                 // bat 'python -m unittest factorial_test.py'
                 // or, if using pytest:
                 bat '''
-                    source venv/bin/activate
+                    venv\\Scripts\\activate
                     pytest -s tests/factorial_test.py
                 '''
             }
