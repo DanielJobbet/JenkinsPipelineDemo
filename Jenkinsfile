@@ -25,7 +25,8 @@ pipeline {
     post {
         always {
             // Clean up workspace after the build!
-            cleanWs()
+            junit 'latest_test_results.xml'
+            // cleanWs()
         }
     }
 }

@@ -1,6 +1,5 @@
 import src.factorial as factorial
 
-
 def test_zero(self):
     assert factorial(0) == 1, "Factorial of 0 should be 1!"
 
