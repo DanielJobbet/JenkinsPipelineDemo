@@ -11,9 +11,6 @@ class FactorialTestCase(unittest.TestCase):
         self.assertEqual(factorial.factorial(3), 6)
         self.assertEqual(factorial.factorial(4), 24)
 
-    def test_some_other_numbers(self):
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()
