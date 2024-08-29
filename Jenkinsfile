@@ -7,26 +7,19 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Setup Python Environment') {
-                steps {
-                    // Step 1: Install Python if needed
-                    bat '''
-                        python3 -m venv venv
-                        venv\\Scripts\\activate
-                        pip install pytest>=7.0.0
-                    '''
-                }
-        }
         stage('Run Tests') {
             steps {
+                // Step 1: Install Python if needed
+                bat '''
+                    python3 -m venv venv
+                    venv\\Scripts\\activate
+                    pip install pytest>=7.0.0
+                    pytest -s
+                '''
                 // Run the Python test file
                 // Modify this command based on the test framework you're using
                 // bat 'python -m unittest factorial_test.py'
                 // or, if using pytest:
-                bat '''
-                    venv\\Scripts\\activate
-                    pytest -s
-                '''
             }
         }
     }
