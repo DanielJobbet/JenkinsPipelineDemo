@@ -27,7 +27,7 @@ pipeline {
             steps {
                 // Run the Python test file
                 bat '''
-                    python -m pytest -v tests/factorial_test.py
+                    python -m pytest -v --color=yes tests/factorial_test.py
                 '''
             }
         }
