@@ -19,7 +19,7 @@ pipeline {
                 bat '''
                     python -m venv venv
                     venv\\Scripts\\activate
-                    pip install -r pytest
+                    pip install pytest
                 '''
             }
         }
@@ -27,6 +27,7 @@ pipeline {
             steps {
                 // Run the Python tests
                 bat '''
+                    call venv\\Scripts\\activate
                     python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
                 '''
             }
