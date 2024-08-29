@@ -15,6 +15,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                // Build the Python virtual environment
                 bat '''
                     python -m venv venv
                     venv\\Scripts\\activate
@@ -24,21 +25,17 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Run the Python test file
-                // Modify this command based on the test framework you're using
                 bat '''
                     venv\\Scripts\\activate
-                    python -m unittest -v tests/factorial_test.py > unittest_output.log 2>&1
-                    type unittest_output.log
+                    python -m unittest -v tests/factorial_test.py
                 '''
-                // or, if using pytest:
             }
-            post {
-                always {
-                    // Clean up workspace after the build
-                    // junit allowEmptyResults: true, testResults: 'results.xml'
-                    cleanWs()
-                }
-            }
+        }
+    }
+    post {
+        always {
+            // Clean up workspace after the build
+            cleanWs()
         }
     }
 }
