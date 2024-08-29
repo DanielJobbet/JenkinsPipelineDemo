@@ -13,19 +13,22 @@ pipeline {
                 checkout scm
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         // Build the Python virtual environment
-        //         bat '''
-        //             python -m venv venv
-        //             venv\\Scripts\\activate
-        //         '''
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                // Build the Python virtual environment
+                bat '''
+                    python -m venv venv
+                    venv\\Scripts\\activate
+                    pip install pytest
+                '''
+            }
+        }
         stage('Run Tests') {
             steps {
                 // Run the Python test file
-                bat 'python -m unittest -v tests/factorial_test.py'
+                bat '''
+                    python -m pytest -s tests/factorial_test.py
+                '''
             }
         }
     }
