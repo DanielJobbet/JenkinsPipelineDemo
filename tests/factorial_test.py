@@ -1,15 +1,10 @@
-import unittest
-import src.factorial
+import src.factorial as factorial
 
 
-class FactorialTestCase(unittest.TestCase):
-    def test_zero(self):
-        self.assertEqual(factorial.factorial(0), 1) , "Factorial of 0 should be 1!"
+def test_zero(self):
+    assert factorial(0) == 1, "Factorial of 0 should be 1!"
 
-    def test_some_numbers(self):
-        self.assertEqual(factorial.factorial(2), 2)
-        self.assertEqual(factorial.factorial(3), 6)
-        self.assertEqual(factorial.factorial(4), 24)
-
-if __name__ == '__main__':
-    unittest.main()
+def test_some_numbers(self):
+    assert factorial(2) == 2
+    assert factorial(3) == 6
+    assert factorial(4) == 24
