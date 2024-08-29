@@ -7,14 +7,19 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the Git repository
+                checkout scm
+            }
+        }
         stage('Run Tests') {
             steps {
                 bat '''
                     python3 -m venv venv
                     venv\\Scripts\\activate
                     pip install pytest==8.3.2
-                    pytest tests/factorial_test.py --junitxml=./xmlReport/output.xml
-                    ./gradlew check
+                    pytest --junit-xml test-reports/results.xml tests/factorial_test.py
                 '''
                 // Run the Python test file
                 // Modify this command based on the test framework you're using
@@ -26,7 +31,7 @@ pipeline {
     post {
         always {
             // Clean up workspace after the build!
-            junit './xmlReport/output.xml'
+            junit 'test-reports/results.xml'
             // cleanWs()
         }
     }
