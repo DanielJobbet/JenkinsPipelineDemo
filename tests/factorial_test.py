@@ -9,7 +9,7 @@ class FactorialTestCase(unittest.TestCase):
     def test_some_numbers(self):
         self.assertEqual(factorial(2), 2)
         self.assertEqual(factorial(3), 6)
-        self.assertEqual(factorial(4), 24)
+        self.assertEqual(factorial(40), 24)
 
 if __name__ == '__main__':
     unittest.main()
