@@ -18,7 +18,7 @@ pipeline {
             steps {
                 // Run the Python test file
                 // Modify this command based on the test framework you're using
-                sh 'python -m unittest factorial_test.py'
+                bat 'python -m unittest factorial_test.py'
                 // or, if using pytest:
                 // sh 'pytest test_my_app.py'
             }
