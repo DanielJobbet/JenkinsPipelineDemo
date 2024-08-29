@@ -21,8 +21,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat '''
-                    venv\\Scripts\\activate
-                    pip install pytest==8.3.2
+                    venv\\Scripts\\activate && \
+                    pip install pytest==8.3.2 && \
                     pytest --verbose --junit-xml test-reports/results.xml tests/factorial_test.py
                 '''
                 // Run the Python test file
