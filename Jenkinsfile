@@ -21,7 +21,7 @@ pipeline {
             steps {
                 // Run the Python tests
                 bat 'python -m pytest -v tests/factorial_test.py --junit-xml=results.xml || [[ $? -eq 1 ]]'
-                junit 'results.xml'
+                junit testResults: 'results.xml', skipPublishingChecks: true
             }
         }
     }
