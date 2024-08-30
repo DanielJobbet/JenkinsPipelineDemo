@@ -40,7 +40,7 @@ pipeline {
                     junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
 
                     // Ensure the build is marked as SUCCESS
-                    currentBuild.result = 'SUCCESS'
+                    currentStage.result = 'SUCCESS'
                 }
             }
         }
