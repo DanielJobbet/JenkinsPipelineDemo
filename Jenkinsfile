@@ -25,6 +25,8 @@ pipeline {
                     if %ERRORLEVEL% neq 0 exit 0
                 '''
                 junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
+            }
+            script {
                 currentBuild.result = 'SUCCESS'
             }
         }
