@@ -31,7 +31,6 @@ pipeline {
                             python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
                         '''
                         junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
-                        bat 'exit 1'
                     } catch (Exception err) {
                         currentBuild.result = 'SUCCESS'
                     }
