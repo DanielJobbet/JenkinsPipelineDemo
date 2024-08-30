@@ -17,33 +17,14 @@ pipeline {
                 '''
             }
         }
-        // stage('Run Unit Tests') {
-        //     steps {
-        //         // Run the Python tests and save logs
-        //         bat '''
-        //             python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
-        //             if %ERRORLEVEL% neq 0 exit 0
-        //         '''
-        //         junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
-        //     }
-        // }
-        stage('Run Unit Test') {
+        stage('Run Unit Tests') {
             steps {
-                script {
-                    // Run the tests without generating XML
-                    bat '''
-                        python -m pytest -v tests/factorial_test.py > test_output.log
-                        if %ERRORLEVEL% neq 0 exit 0
-                    '''
-                    
-                    // Convert test output to JUnit XML (hypothetical tool or script)
-                    bat '''
-                        python generate_junit_xml.py test_output.log results.xml
-                    '''
-
-                    // Process the test results
-                    junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
-                }
+                // Run the Python tests and save logs
+                bat '''
+                    python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
+                    if %ERRORLEVEL% neq 0 exit 0
+                '''
+                junit skipMarkingBuildUnstable: true, allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
             }
         }
     }
