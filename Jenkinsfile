@@ -22,9 +22,6 @@ pipeline {
             steps {
                 // Run the Python tests and save logs
                 bat 'python -m pytest -v tests/factorial_test.py --junit-xml=results.xml'
-                IF ERRORLEVEL 1 (
-                    echo "Failure on a test"
-                )
                 junit testResults: 'results.xml', skipPublishingChecks: true
             }
         }
