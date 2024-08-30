@@ -1,3 +1,4 @@
+#!/bin/bat
 pipeline {
     agent any
     stages {
@@ -21,6 +22,7 @@ pipeline {
             steps {
                 // Run the Python tests and save logs
                 bat 'python -m pytest -v tests/factorial_test.py --junit-xml=results.xml'
+                true
                 junit testResults: 'results.xml', skipPublishingChecks: true
             }
         }
