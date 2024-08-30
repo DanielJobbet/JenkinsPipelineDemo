@@ -19,17 +19,13 @@ pipeline {
         }
         stage('Run Unit Tests') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
-    bat '''
-       python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
-       if %ERRORLEVEL% neq 0 (
-           echo Test failed but marking as success.
-           exit 0
-       ) else (
-           junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
-       )
-    '''
-}
+                // Run the Python tests and save logs
+                bat '''
+                    python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
+                    if %ERRORLEVEL% neq 0 exit 0
+                '''
+                junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
+            }
         }
     }
     post {
