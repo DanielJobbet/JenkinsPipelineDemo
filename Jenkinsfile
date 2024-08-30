@@ -24,7 +24,7 @@ pipeline {
                     python -m pytest -v tests/factorial_test.py --junit-xml=results.xml
                     if %ERRORLEVEL% neq 0 exit 0
                 '''
-                junit skipMarkingBuildUnstable: true, allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
+                junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
             }
         }
     }
