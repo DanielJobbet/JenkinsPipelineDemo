@@ -32,7 +32,7 @@ pipeline {
                         '''
                         junit allowEmptyResults: true, testResults: 'results.xml', skipPublishingChecks: true
                     } catch (Exception err) {
-                        if %ERRORLEVEL% neq 0 exit 0
+                        if ERRORLEVEL neq 0 exit 0
                         currentBuild.result = 'SUCCESS'
                     }
                 }
